@@ -12,4 +12,4 @@ document.getElementById('btn-submit').addEventListener('click',function(){
         alert('tui amr sontan na');
         
     }
-})
+});
