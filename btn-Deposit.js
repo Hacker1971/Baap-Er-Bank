@@ -1,23 +1,34 @@
-document.getElementById('btn-Deposit').addEventListener('click',function(){
-    const depositText = document.getElementById('Deposit-text');
-    const Deposit = depositText.value;
+ const  currentBlance = document.getElementById('blance-total');
+ let totalBlance = 1240;
+ let totalDeposite = 0;
+ let totalWidtdrow  = 0;
 
-    const depoTotalElement = document.getElementById('depo-total');
-    const depoTotal = depoTotalElement.innerText;
-    const depoAmount = parseFloat(depoTotal) + parseFloat(Deposit);
-        depoTotalElement.innerText = depoAmount;
+ //! totalDeposite....
+  document.getElementById('btn-Deposit').addEventListener('click',function(){
+       const depositValue = document.getElementById('Deposit-text').value;
+       const depositBlance = document.getElementById('depo-total');
+        if(depositValue> 0){
+          totalDeposite+= parseFloat(depositValue);
+          depositBlance.innerText = `${totalDeposite}`
+          totalBlance+=parseFloat(depositValue)
+          currentBlance.innerText =`${totalBlance}`
+          
+          document.getElementById('Deposit-text').value='';
 
-});
+        }
+  });
+  //* totalWidtdrow .....
+  document.getElementById("btn-Withdraw").addEventListener("click", function () {
+    const widtdrowValue = document.getElementById("Withdraw-text").value;
+    const witdrowBlance = document.getElementById("with-total")
 
-//withdraw it.....
+    if(widtdrowValue>0 && widtdrowValue <= totalBlance){
+        totalWidtdrow += parseFloat(widtdrowValue)
+        witdrowBlance.innerText = `${totalWidtdrow}`
+        totalBlance -= parseFloat(widtdrowValue)
+        currentBlance.innerText = `${totalBlance}`
+        document.getElementById("Withdraw-text").value = ""
+    }
 
-document.getElementById('btn-Withdraw').addEventListener('click',function(){
-    const depositText = document.getElementById('Withdraw-text');
-    const Deposit = depositText.value;
+})
 
-    const depoTotalElement = document.getElementById('with-total');
-    const depoTotal = depoTotalElement.innerText;
-    const depoAmount = parseFloat(depoTotal) + parseFloat(Deposit);
-        depoTotalElement.innerText = depoAmount;
-
-});
